@@ -27,4 +27,26 @@
       }
     }
   }
+  import { onMounted, ref } from 'vue'
+
+  
+let filterOn = ref(false)
+let ships = ref()
+let gotData = ref(false)
+
+
+  async function fetchShips() {
+  const response = await fetch(
+    'https://data.cityofnewyork.us/resource/gzfs-3h4m.json'
+  )
+  const array = await response.json()
+  ships.value = array.ships
+  gotData.value = true
+  console.log(array)
+}
+
+onMounted(() => {
+  fetchShips()
+  console.log(ships)
+})
   </script>
