@@ -28,5 +28,26 @@ export default {
       console.error(e)
     }
   }
+  import { onMounted, ref } from 'vue'
+
+  
+let filterOn = ref(false)
+let ships = ref()
+let gotData = ref(false)
+
+
+  async function fetchShips() {
+  const response = await fetch(
+    'https://data.cityofnewyork.us/resource/gzfs-3h4m.json'
+  )
+  const array = await response.json()
+  ships.value = array.ships
+  gotData.value = true
+  console.log(array)
 }
-</script>
+
+onMounted(() => {
+  fetchShips()
+  console.log(ships)
+})
+  </script>
