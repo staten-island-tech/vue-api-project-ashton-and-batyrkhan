@@ -5,7 +5,8 @@ import chartChaer from '../components/chartChaer.vue'
 
 <template>
   <main>
-   
+    <TheWelcome />
     <chartChaer />
   </main>
 </template>
+
