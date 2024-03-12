@@ -1,0 +1,43 @@
+plan
+
+
+import data form api
+Agency Spending by Budget Function
+
+https://data.cityofnewyork.us/resource/gzfs-3h4m.json
+Socrata Open Data API
+https://data.seattle.gov/resource/jguv-t9rb.json?$query=SELECT%2520*%2520WHERE%2520Species%2520NOT%2520IN%2520(%2527Cat%2527%252C%2520%2527Dog%2527)
+
+https://dev.socrata.com/foundry/data.cityofnewyork.us/gzfs-3h4m
+
+https://support.socrata.com/hc/en-us/articles/202949268-How-to-query-more-than-1000-rows-of-a-dataset
+
+https://data.cityofnewyork.us/City-Government/Agency-Spending-by-Budget-Function/gzfs-3h4m/about_data
+
+filter by the agency name
+sum up the totals for the x amount of actual years
+- display the amount of spending for each year as an overlay bar chart 
+sum up the totals for the x amount of planned years
+- display the amount of spending for each year as an overlay bar chart 
+
+everything on the radar
+
+Important information:
+
+names of agencies: (exactly how it is in the api...)
+
+0 "DEPARTMENT OF FINANCE"
+1 "DEPARTMENT OF TRANSPORTATION"
+2 "DEPARTMENT OF HEALTH AND MENTAL HYGIENE"
+3 "DEPARTMENT OF SANITATION"
+4 "DEPARTMENT OF SOCIAL SERVICES"
+5 "DEPARTMENT OF PARKS AND RECREATION"
+6 "DEPARTMENT OF ENVIRONMENTAL PROTECT."
+7 "HOUSING PRESERVATION AND DEVELOPMENT"
+8 "DEPARTMENT OF SMALL BUSINESS SERVICES"
+9 "DEPARTMENT OF YOUTH & COMMUNITY DEV"
+10 "DEPARTMENT FOR THE AGING"
+11 "DEPARTMENT OF CORRECTION"
+12 "DEPARTMENT OF HOMELESS SERVICES"
+13 "ADMIN FOR CHILDREN'S SERVICES"
+14 "POLICE DEPARTMENT"
