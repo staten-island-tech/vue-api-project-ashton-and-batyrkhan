@@ -32,6 +32,10 @@ export default {
         });
         console.log(agencySortNYCAPI); //Logs every data point (filtered by agency_name property)
 
+    
+
+
+
         //Sort By Row Id (Spending / Headcount / Funding --------------------------------------------------------------------------------------------------------------------
         const rowidSortNYCAPI = {}; 
         jsonNYCAPI.forEach(dataPtNYCAPI => {
@@ -41,6 +45,18 @@ export default {
           rowidSortNYCAPI[dataPtNYCAPI.row_id].push(dataPtNYCAPI); 
         });
         console.log(rowidSortNYCAPI); 
+
+
+        // Calculate sum of plan_amount_year_1 and plan_amount_year_2 for each row_id
+        const rowSumsNYCAPI = {};
+        Object.entries(rowidSortNYCAPI).forEach(([rowId, rowData]) => {
+          rowSumsNYCAPI[rowId] = rowData.reduce((sum, dataPt) => {
+            return sum + (dataPt.plan_amount_year_1 || 0) + (dataPt.plan_amount_year_2 || 0);
+          }, 0);
+        });
+
+        console.log(rowSumsNYCAPI); // Log the calculated sums
+
 
         //Sort By Agency Code --------------------------------------------------------------------------------------------------------------------
         const agencyCodeSortNYCAPI = {}; 
@@ -95,3 +111,5 @@ export default {
   }
 };
 </script>
+
+
