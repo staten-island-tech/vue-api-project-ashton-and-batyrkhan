@@ -51,7 +51,7 @@ export default {
         const rowSumsNYCAPI = {};
         Object.entries(rowidSortNYCAPI).forEach(([rowId, rowData]) => {
           rowSumsNYCAPI[rowId] = rowData.reduce((sum, dataPt) => {
-            return sum + (dataPt.plan_amount_year_1 || 0) + (dataPt.plan_amount_year_2 || 0);
+            return sum + (parseInt(dataPt.plan_amount_year_1) || 0) + (parseInt(dataPt.plan_amount_year_2) || 0);
           }, 0);
         });
 
