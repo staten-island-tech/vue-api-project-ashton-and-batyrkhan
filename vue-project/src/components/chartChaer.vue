@@ -46,6 +46,37 @@ export default {
         });
         console.log(rowidSortNYCAPI); 
 
+        const rowidAmtTotArr = {};
+Object.keys(rowidSortNYCAPI).forEach(rowIdFunction => { //Calculate the totals
+let rowIdPlanAmtSum = 0;
+let rowIdPlanAmtSumYr1 = 0;
+let rowIdPlanAmtSumYr2 = 0;
+let rowIdActAmtSum = 0;
+let rowIdActAmtSumYr1 = 0;
+let rowIdActAmtSumYr2 = 0;
+let rowIdActAmtSumYr3 = 0;
+rowidSortNYCAPI[rowIdFunction].forEach(dataPtNYCAPI => {
+rowIdPlanAmtSum += (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0) + (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+rowIdPlanAmtSumYr1 += (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0);
+rowIdPlanAmtSumYr2 += (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+rowIdActAmtSum += (parseInt(dataPtNYCAPI.year_1_actual) || 0) + (parseInt(dataPtNYCAPI.year_2_actual) || 0)+ (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+rowIdActAmtSumYr1 += (parseInt(dataPtNYCAPI.year_1_actual) || 0);
+rowIdActAmtSumYr2 += (parseInt(dataPtNYCAPI.year_2_actual) || 0);
+rowIdActAmtSumYr3 += (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+});
+rowidAmtTotArr[rowIdFunction] = {
+rowIdPlanAmtSum,
+rowIdPlanAmtSumYr1,
+rowIdPlanAmtSumYr2,
+rowIdActAmtSum,
+rowIdActAmtSumYr1,
+rowIdActAmtSumYr2,
+rowIdActAmtSumYr3
+};
+});
+console.log(rowidAmtTotArr);
+
+
 
         // Calculate sum of plan_amount_year_1 and plan_amount_year_2 for each row_id
         const rowSumsNYCAPI = {};
