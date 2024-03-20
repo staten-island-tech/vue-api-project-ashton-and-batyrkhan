@@ -22,6 +22,10 @@ export default {
             };
         }; 
         const jsonNYCAPI = await responseNYCAPI.json(); //Stores the response from the NYC API as json
+
+
+
+
         //Sort By Agency------------------------------------------------------------------------------------------------------------------------------------------------------
         const agencySortNYCAPI = {}; //Array for the NYC API datapoints after they have been sorted by agency_name. Holds array of arrays based on agency names.
         jsonNYCAPI.forEach(dataPtNYCAPI => {
@@ -31,6 +35,39 @@ export default {
           agencySortNYCAPI[dataPtNYCAPI.agency_name].push(dataPtNYCAPI); //Gains access to an agency array with the corresponding name and adds the data point to it. 
         });
         console.log(agencySortNYCAPI); //Logs every data point (filtered by agency_name property)
+        const agencyPlanAmtTotArr = {};
+        Object.keys(agencySortNYCAPI).forEach(NYCAgency => { //Calculate the totals
+          let agencyPlanAmtSum = 0;
+          let agencyPlanAmtSumYr1 = 0;
+          let agencyPlanAmtSumYr2 = 0;
+          let agencyActAmtSum = 0;
+          let agencyActAmtSumYr1 = 0;
+          let agencyActAmtSumYr2 = 0;
+          let agencyActAmtSumYr3 = 0;
+
+          agencySortNYCAPI[NYCAgency].forEach(dataPtNYCAPI => {
+            agencyPlanAmtSum += (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0) + (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            agencyPlanAmtSumYr1 += (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0);
+            agencyPlanAmtSumYr2 += (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            agencyActAmtSum += (parseInt(dataPtNYCAPI.year_1_actual) || 0) + (parseInt(dataPtNYCAPI.year_2_actual) || 0)+ (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+            agencyActAmtSumYr1 += (parseInt(dataPtNYCAPI.year_1_actual) || 0);
+            agencyActAmtSumYr2 += (parseInt(dataPtNYCAPI.year_2_actual) || 0);
+            agencyActAmtSumYr3 += (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+          });
+          agencyPlanAmtTotArr[NYCAgency] = { //Stores the totals for the different properties for each department
+            agencyPlanAmtSum,
+            agencyPlanAmtSumYr1,
+            agencyPlanAmtSumYr2,
+            agencyActAmtSum,
+            agencyActAmtSumYr1,
+            agencyActAmtSumYr2,
+            agencyActAmtSumYr3
+          };
+        });
+        console.log(agencyPlanAmtTotArr); //Logs the agencyPlanAmtTotArr
+
+
+        
 
         //Sort By Row Id (Spending / Headcount / Funding --------------------------------------------------------------------------------------------------------------------
         const rowidSortNYCAPI = {}; 
