@@ -74,7 +74,7 @@ export default {
 
 
         //Sort By Row Id (Spending / Headcount / Funding --------------------------------------------------------------------------------------------------------------------
-        const rowidSortNYCAPI = {}; 
+        const rowidSortNYCAPI = {}; //Filters the original data by spending/ headcount/ funding
         jsonNYCAPI.forEach(dataPtNYCAPI => {
           if (!rowidSortNYCAPI[dataPtNYCAPI.row_id]) {
             rowidSortNYCAPI[dataPtNYCAPI.row_id] = [];
@@ -83,7 +83,7 @@ export default {
         });
         console.log(rowidSortNYCAPI);
 
-        const rowidAmtTotArr = {};
+        const rowidAmtTotArr = {}; //Sums up all of the values within each row id
         Object.keys(rowidSortNYCAPI).forEach(rowIdFunction => { //Calculate the totals
           let rowIdPlanAmtSum = 0;
           let rowIdPlanAmtSumYr1 = 0;
@@ -145,18 +145,67 @@ export default {
         console.log(spendingTypeDescriptionSortNYCAPI); 
 
         //Sort By Budget Function Description Sort --------------------------------------------------------------------------------------------------------------------
-        const budgetFunctionSortNYCAPI = {}; 
+        
+        
+        
+        
+        const bgtFuncSrtAPI = {};
         jsonNYCAPI.forEach(dataPtNYCAPI => {
-          if (!budgetFunctionSortNYCAPI[dataPtNYCAPI.budget_function]) {
-            budgetFunctionSortNYCAPI[dataPtNYCAPI.budget_function] = [];
+          if (!bgtFuncSrtAPI[dataPtNYCAPI.budget_function]) {
+            bgtFuncSrtAPI[dataPtNYCAPI.budget_function] = [];
           }
-          budgetFunctionSortNYCAPI[dataPtNYCAPI.budget_function].push(dataPtNYCAPI); 
+          bgtFuncSrtAPI[dataPtNYCAPI.budget_function].push(dataPtNYCAPI);
         });
-        console.log(budgetFunctionSortNYCAPI); 
+        console.log(bgtFuncSrtAPI); //Filters by budget function
+        /* const bgtRwIdSrtAPI = {};
+        Object.keys(bgtFuncSrtAPI).forEach(bgtFunc => {
+          bgtRwIdSrtAPI[bgtFunc] = {};
+          bgtFuncSrtAPI[bgtFunc].forEach(dataPtNYCAPI => {
+            if(!bgtRwIdSrtAPI[bgtFunc][dataPtNYCAPI.row_id]){
+              bgtRwIdSrtAPI[bgtFunc][dataPtNYCAPI.row_id] = [];
+            }
+            bgtRwIdSrtAPI[bgtFunc][dataPtNYCAPI.row_id].push(dataPtNYCAPI);
+          });
+        })
+        console.log(bgtRwIdSrtAPI); //Filters by budget function and each budget function by row id
+ */
 
+        const bgtRwIdSrtAPI = {}; // Final object to store processed data
+        Object.keys(bgtFuncSrtAPI).forEach(budgetFunction => {
+          bgtRwIdSrtAPI[budgetFunction] = {};
+          bgtFuncSrtAPI[budgetFunction].forEach(dataPtNYCAPI => {
+            if (!bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id]) {
+              bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id] = {
+                bgtRwIdPlanAmtSum: 0,
+                bgtRwIdPlanAmtSumYr1: 0,
+                bgtRwIdPlanAmtSumYr2: 0,
+                bgtRwIdActAmtSum: 0,
+                bgtRwIdActAmtSumYr1: 0,
+                bgtRwIdActAmtSumYr2: 0,
+                bgtRwIdActAmtSumYr3: 0,
+              };
+            }
+            const bgtRwIdPlanAmtCounter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0) + (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            const bgtRwIdPlanAmtYr1Counter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0);
+            const bgtRwIdPlanAmtYr2Counter = (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            const bgtRwIdActAmtCounter = (parseInt(dataPtNYCAPI.year_1_actual) || 0) + (parseInt(dataPtNYCAPI.year_2_actual) || 0) + (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+            const bgtRwIdActAmtYr1Counter = (parseInt(dataPtNYCAPI.year_1_actual) || 0);
+            const bgtRwIdActAmtYr2Counter = (parseInt(dataPtNYCAPI.year_2_actual) || 0);
+            const bgtRwIdActAmtYr3Counter = (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+            bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id].bgtRwIdPlanAmtSum += bgtRwIdPlanAmtCounter;
+            bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id].bgtRwIdPlanAmtSumYr1 += bgtRwIdPlanAmtYr1Counter;
+            bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id].bgtRwIdPlanAmtSumYr2 += bgtRwIdPlanAmtYr2Counter;
+            bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id].bgtRwIdActAmtSum += bgtRwIdActAmtCounter;
+            bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id].bgtRwIdActAmtSumYr1 += bgtRwIdActAmtYr1Counter;
+            bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id].bgtRwIdActAmtSumYr2 += bgtRwIdActAmtYr2Counter;
+            bgtRwIdSrtAPI[budgetFunction][dataPtNYCAPI.row_id].bgtRwIdActAmtSumYr3 += bgtRwIdActAmtYr3Counter;
+          });
+        });
+
+        console.log(bgtRwIdSrtAPI); // Logs the bgtRwIdSrtAPI with summed values
         //------------------------------------------------------------------------------------------------------------------------------------------------------
         dataNYCAPI.value = jsonNYCAPI;
-        console.log(dataNYCAPI.value); //Logs every data point
+        console.log(dataNYCAPI.value); //Logs every data point */
       } catch (error) {
         console.log("Oh no, this is a rather unfortunate conundrum! Here's ur error :P" + error);
       }
