@@ -115,6 +115,10 @@ export default {
 
 
         //Sort By Agency Code --------------------------------------------------------------------------------------------------------------------
+        
+        
+        
+        
         const agencyCodeSortNYCAPI = {}; 
         jsonNYCAPI.forEach(dataPtNYCAPI => {
           if (!agencyCodeSortNYCAPI[dataPtNYCAPI.agency_code]) {
@@ -123,8 +127,48 @@ export default {
           agencyCodeSortNYCAPI[dataPtNYCAPI.agency_code].push(dataPtNYCAPI); 
         });
         console.log(agencyCodeSortNYCAPI); 
+
+        const agencyCodeSortTotNYCAPI = {}; // Final object to store processed data
+        Object.keys(agencyCodeSortNYCAPI).forEach(spendingType => {
+          agencyCodeSortTotNYCAPI[spendingType] = {};
+          agencyCodeSortNYCAPI[spendingType].forEach(dataPtNYCAPI => {
+            if (!agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id]) {
+              agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id] = {
+                agencyCodePlanAmtSum: 0,
+                agencyCodePlanAmtSumYr1: 0,
+                agencyCodePlanAmtSumYr2: 0,
+                agencyCodeActAmtSum: 0,
+                agencyCodeActAmtSumYr1: 0,
+                agencyCodeActAmtSumYr2: 0,
+                agencyCodeActAmtSumYr3: 0,
+              };
+            }
+            const agencyCodePlanAmtSumCounter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0) + (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            const agencyCodePlanAmtSumYr1Counter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0);
+            const agencyCodePlanAmtSumYr2Counter = (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            const agencyCodeActAmtSumCounter = (parseInt(dataPtNYCAPI.year_1_actual) || 0) + (parseInt(dataPtNYCAPI.year_2_actual) || 0) + (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+            const agencyCodeActAmtSumYr1Counter = (parseInt(dataPtNYCAPI.year_1_actual) || 0);
+            const agencyCodeActAmtSumYr2Counter = (parseInt(dataPtNYCAPI.year_2_actual) || 0);
+            const agencyCodeActAmtSumYr3Counter = (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+            agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].agencyCodePlanAmtSum += agencyCodePlanAmtSumCounter;
+            agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].agencyCodePlanAmtSumYr1 += agencyCodePlanAmtSumYr1Counter;
+            agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].agencyCodePlanAmtSumYr2 += agencyCodePlanAmtSumYr2Counter;
+            agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].agencyCodeActAmtSum += agencyCodeActAmtSumCounter;
+            agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].agencyCodeActAmtSumYr1 += agencyCodeActAmtSumYr1Counter;
+            agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].agencyCodeActAmtSumYr2 += agencyCodeActAmtSumYr2Counter;
+            agencyCodeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].agencyCodeActAmtSumYr3 += agencyCodeActAmtSumYr3Counter;
+          });
+        });
+        console.log(agencyCodeSortTotNYCAPI); 
         
+
+
+
         //Sort By Spending Type Sort --------------------------------------------------------------------------------------------------------------------
+        
+        
+        
+        
         const spendingTypeSortNYCAPI = {}; 
         jsonNYCAPI.forEach(dataPtNYCAPI => {
           if (!spendingTypeSortNYCAPI[dataPtNYCAPI.spending_type]) {
@@ -134,7 +178,47 @@ export default {
         });
         console.log(spendingTypeSortNYCAPI); 
 
+        const spendingTypeSortTotNYCAPI = {}; // Final object to store processed data
+        Object.keys(spendingTypeSortNYCAPI).forEach(spendingType => {
+          spendingTypeSortTotNYCAPI[spendingType] = {};
+          spendingTypeSortNYCAPI[spendingType].forEach(dataPtNYCAPI => {
+            if (!spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id]) {
+              spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id] = {
+                spendingTypePlanAmtSum: 0,
+                spendingTypePlanAmtSumYr1: 0,
+                spendingTypePlanAmtSumYr2: 0,
+                spendingTypeActAmtSum: 0,
+                spendingTypeActAmtSumYr1: 0,
+                spendingTypeActAmtSumYr2: 0,
+                spendingTypeActAmtSumYr3: 0,
+              };
+            }
+            const spendingTypePlanAmtSumCounter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0) + (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            const spendingTypePlanAmtSumYr1Counter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0);
+            const spendingTypePlanAmtSumYr2Counter = (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            const spendingTypeActAmtSumCounter = (parseInt(dataPtNYCAPI.year_1_actual) || 0) + (parseInt(dataPtNYCAPI.year_2_actual) || 0) + (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+            const spendingTypeActAmtSumYr1Counter = (parseInt(dataPtNYCAPI.year_1_actual) || 0);
+            const spendingTypeActAmtSumYr2Counter = (parseInt(dataPtNYCAPI.year_2_actual) || 0);
+            const spendingTypeActAmtSumYr3Counter = (parseInt(dataPtNYCAPI.year_3_actual) || 0);
+            spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypePlanAmtSum += spendingTypePlanAmtSumCounter;
+            spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypePlanAmtSumYr1 += spendingTypePlanAmtSumYr1Counter;
+            spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypePlanAmtSumYr2 += spendingTypePlanAmtSumYr2Counter;
+            spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypeActAmtSum += spendingTypeActAmtSumCounter;
+            spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypeActAmtSumYr1 += spendingTypeActAmtSumYr1Counter;
+            spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypeActAmtSumYr2 += spendingTypeActAmtSumYr2Counter;
+            spendingTypeSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypeActAmtSumYr3 += spendingTypeActAmtSumYr3Counter;
+          });
+        });
+        console.log(spendingTypeSortTotNYCAPI); 
+
+
+
+
         //Sort By Spending Type Description Sort --------------------------------------------------------------------------------------------------------------------
+        
+        
+        
+        
         const spendingTypeDescriptionSortNYCAPI = {}; 
         jsonNYCAPI.forEach(dataPtNYCAPI => {
           if (!spendingTypeDescriptionSortNYCAPI[dataPtNYCAPI.spending_type_description]) {
@@ -143,7 +227,30 @@ export default {
           spendingTypeDescriptionSortNYCAPI[dataPtNYCAPI.spending_type_description].push(dataPtNYCAPI); 
         });
         console.log(spendingTypeDescriptionSortNYCAPI); 
-
+        const spendingTypeDescriptionSortTotNYCAPI = {}; 
+        Object.keys(spendingTypeDescriptionSortNYCAPI).forEach(spendingType => {
+          spendingTypeDescriptionSortTotNYCAPI[spendingType] = {};
+          spendingTypeDescriptionSortNYCAPI[spendingType].forEach(dataPtNYCAPI => {
+            if (!spendingTypeDescriptionSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id]) {
+              spendingTypeDescriptionSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id] = {
+                spendingTypePlanAmtSum: 0,
+                spendingTypePlanAmtSumYr1: 0,
+                spendingTypePlanAmtSumYr2: 0,
+              };
+            }
+            const spendingTypePlanAmtCounter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0) + (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            const spendingTypePlanAmtYr1Counter = (parseInt(dataPtNYCAPI.plan_amount_year_1) || 0);
+            const spendingTypePlanAmtYr2Counter = (parseInt(dataPtNYCAPI.plan_amount_year_2) || 0);
+            spendingTypeDescriptionSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypePlanAmtSum += spendingTypePlanAmtCounter;
+            spendingTypeDescriptionSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypePlanAmtSumYr1 += spendingTypePlanAmtYr1Counter;
+            spendingTypeDescriptionSortTotNYCAPI[spendingType][dataPtNYCAPI.row_id].spendingTypePlanAmtSumYr2 += spendingTypePlanAmtYr2Counter;
+          });
+        });
+        console.log(spendingTypeDescriptionSortTotNYCAPI); 
+        
+        
+        
+        
         //Sort By Budget Function Description Sort --------------------------------------------------------------------------------------------------------------------
         
         
@@ -157,20 +264,8 @@ export default {
           bgtFuncSrtAPI[dataPtNYCAPI.budget_function].push(dataPtNYCAPI);
         });
         console.log(bgtFuncSrtAPI); //Filters by budget function
-        /* const bgtRwIdSrtAPI = {};
-        Object.keys(bgtFuncSrtAPI).forEach(bgtFunc => {
-          bgtRwIdSrtAPI[bgtFunc] = {};
-          bgtFuncSrtAPI[bgtFunc].forEach(dataPtNYCAPI => {
-            if(!bgtRwIdSrtAPI[bgtFunc][dataPtNYCAPI.row_id]){
-              bgtRwIdSrtAPI[bgtFunc][dataPtNYCAPI.row_id] = [];
-            }
-            bgtRwIdSrtAPI[bgtFunc][dataPtNYCAPI.row_id].push(dataPtNYCAPI);
-          });
-        })
-        console.log(bgtRwIdSrtAPI); //Filters by budget function and each budget function by row id
- */
 
-        const bgtRwIdSrtAPI = {}; // Final object to store processed data
+        const bgtRwIdSrtAPI = {}; 
         Object.keys(bgtFuncSrtAPI).forEach(budgetFunction => {
           bgtRwIdSrtAPI[budgetFunction] = {};
           bgtFuncSrtAPI[budgetFunction].forEach(dataPtNYCAPI => {
