@@ -37,6 +37,9 @@ var chart = () => import('../components/' + chartPath + '.vue');
   <input type="submit" value="Submit">
 </form>
     <chartPath />
+    <chartChaer />
+    <BarChart />
+    <RadarChart />
     
   </main>
 </template>
