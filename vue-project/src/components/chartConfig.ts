@@ -1,4 +1,6 @@
+import { useData } from "@/stores/store"
 
+console.log("useData", useData)
 
 export const data = {
     labels: [
@@ -6,6 +8,7 @@ export const data = {
       'nyc public restrooms',
       'nyc garbage collection',
       'nyc public schools',
+      'nyc public libraries',
       
     ],
     datasets: [
@@ -18,7 +21,7 @@ export const data = {
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(179,181,198,1)',
         backgroundColor: 'rgba(100, 100, 255,0.2)',
-        data: [40, 20, 12, 39]
+        data: [40, 20, 12, 39, 5]
       },
       {
         label: 'spending',
@@ -29,7 +32,7 @@ export const data = {
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(100,155,100,1)',
         backgroundColor: 'rgba(100, 255, 100,0.2)',
-        data: [50, 30, 22, 49]
+        data: [50, 30, 22, 49, 15]
       },
       {
         label: 'headcount',
@@ -40,7 +43,7 @@ export const data = {
         pointHoverBackgroundColor: '#fff',
         pointHoverBorderColor: 'rgba(255,99,132,1)',
         backgroundColor: 'rgba(255, 100, 100,0.2)',
-        data: [20, 10, 2, 29]
+        data: [20, 10, 2, 29, 1]
       }
     ]
   }

@@ -3,6 +3,11 @@ import TheWelcome from '../components/TheWelcome.vue'
 import chartChaer from '../components/chartChaer.vue'
 import BarChart from '../components/BarChart.vue'
 import RadarChart from '../components/RadarChart.vue'
+import BubbleChart from '../components/BubbleChart.vue'
+import DoughNut from '../components/DoughNut.vue'
+import PolarArea from '../components/PolarArea.vue'
+import LineChart from '../components/LineChart.vue'
+import PieChart from '../components/PieChart.vue'
 
 const chartPath = document?.getElementById("charts")?.value ?? "BarChart";
 var chart = () => import('../components/' + chartPath + '.vue');
@@ -36,11 +41,19 @@ var chart = () => import('../components/' + chartPath + '.vue');
   <br><br>
   <input type="submit" value="Submit">
 </form>
-    <chartPath />
     <chartChaer />
+    <chartPath />
+    <DoughNut />
+    <PolarArea />
+   
+    <LineChart />
+    <PieChart />
+    
+    
     <BarChart />
     <RadarChart />
     
   </main>
 </template>
 
+bar doughnut line pie polar radar 

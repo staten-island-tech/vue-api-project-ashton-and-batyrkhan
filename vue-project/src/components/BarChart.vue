@@ -34,6 +34,7 @@
   .chart1{
     
     height:800px;
+    
     background-color: black;
 
   }

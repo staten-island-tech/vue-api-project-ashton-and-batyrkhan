@@ -10,7 +10,7 @@ export default {
     const dataNYCAPI = ref([]);
     onMounted(async () => {
       try {
-        const linkNYCAPI = "https://data.cityofnewyork.us/resource/gzfs-3h4m.json?$limit=67000";
+        const linkNYCAPI = "https://data.cityofnewyork.us/resource/gzfs-3h4m.json?$limit=6700";
         const responseNYCAPI = await fetch(linkNYCAPI);
         if(!responseNYCAPI.ok) {//Error handling.
             if (responseNYCAPI.status === 404) {
@@ -66,6 +66,8 @@ export default {
         });
         console.log(agencyPlanAmtTotArr); //Logs the agencyPlanAmtTotArr
 
+        
+
 
         
 
@@ -112,6 +114,8 @@ export default {
           };
         });
         console.log(rowidAmtTotArr);
+
+        
 
 
         //Sort By Agency Code --------------------------------------------------------------------------------------------------------------------
@@ -166,6 +170,9 @@ export default {
     };
   }
 };
+
+//export { agencyPlanAmtTotArr }; //Exports the agencyPlanAmtTotArr to be used in other components
+//export { rowidAmtTotArr }; //Exports the rowidAmtTotArr to be used in other components
 </script>
 
 

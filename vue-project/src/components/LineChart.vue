@@ -1,27 +1,29 @@
 <template>
-  <div id="chart1">
-    <Radar :data="data" :options="options" />
-  </div>
+    <div class ="chart1">
+    <Line :data="data" :options="options" />
+    </div>
   </template>
   
   <script lang="ts">
   import {
     Chart as ChartJS,
-    RadialLinearScale,
+    CategoryScale,
+    LinearScale,
     PointElement,
     LineElement,
-    Filler,
+    Title,
     Tooltip,
     Legend
   } from 'chart.js'
-  import { Radar } from 'vue-chartjs'
+  import { Line } from 'vue-chartjs'
   import * as chartConfig from './chartConfig.js'
   
   ChartJS.register(
-    RadialLinearScale,
+    CategoryScale,
+    LinearScale,
     PointElement,
     LineElement,
-    Filler,
+    Title,
     Tooltip,
     Legend
   )
@@ -29,7 +31,7 @@
   export default {
     name: 'App',
     components: {
-      Radar
+      Line
     },
     data() {
       return chartConfig
@@ -37,11 +39,11 @@
   }
   </script>
   
-  <style scoped>
-  .chart1{
-    
-    height:800px;
-    background-color: black;
-
-  }
-  </style>
+    <style scoped>
+    .chart1{
+      
+      height:800px;
+      
+  
+    }
+    </style>
