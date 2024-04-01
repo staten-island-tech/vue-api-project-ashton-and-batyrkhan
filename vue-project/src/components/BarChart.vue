@@ -1,5 +1,7 @@
 <template>
+  <div id="chart1">
     <Bar :data="data" :options="options" />
+  </div>
   </template>
   
   <script lang="ts">
@@ -28,3 +30,14 @@
   }
   </script>
   
+  <style scoped>
+  .chart1{
+    
+    height:800px;
+    
+    background-color: black;
+
+  }
+
+
+</style>
