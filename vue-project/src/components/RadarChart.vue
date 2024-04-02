@@ -1,6 +1,6 @@
 <template>
   <div id="chart1">
-    <Radar :data="data" :options="options" />
+    <Radar :data="data" :options="options" class="chart1"/>
   </div>
   </template>
   
@@ -39,9 +39,7 @@
   
   <style scoped>
   .chart1{
-    
-    height:800px;
-    background-color: black;
-
+    width: 2000px;
+    height:2000px;
   }
   </style>

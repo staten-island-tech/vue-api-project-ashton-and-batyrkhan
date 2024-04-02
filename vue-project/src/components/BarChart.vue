@@ -33,7 +33,7 @@
   <style scoped>
   .chart1{
     
-    height:800px;
+    height:1500px;
     
     background-color: black;
 

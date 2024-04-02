@@ -24,8 +24,8 @@
   
     <style scoped>
     .chart1{
-      
-      height:800px;
+      width: 2000px;
+      height:2000px;
       background-color: black;
   
     }

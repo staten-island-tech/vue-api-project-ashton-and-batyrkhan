@@ -35,7 +35,7 @@ export default {
           agencySortNYCAPI[dataPtNYCAPI.agency_name].push(dataPtNYCAPI); //Gains access to an agency array with the corresponding name and adds the data point to it. 
         });
         console.log(agencySortNYCAPI); //Logs every data point (filtered by agency_name property)
-        const agencyPlanAmtTotArr = {};
+        const agencyAmtTotArr = {};
         Object.keys(agencySortNYCAPI).forEach(NYCAgency => { //Calculate the totals
           let agencyPlanAmtSum = 0;
           let agencyPlanAmtSumYr1 = 0;
@@ -54,7 +54,7 @@ export default {
             agencyActAmtSumYr2 += (parseInt(dataPtNYCAPI.year_2_actual) || 0);
             agencyActAmtSumYr3 += (parseInt(dataPtNYCAPI.year_3_actual) || 0);
           });
-          agencyPlanAmtTotArr[NYCAgency] = { //Stores the totals for the different properties for each department
+          agencyAmtTotArr[NYCAgency] = { //Stores the totals for the different properties for each department
             agencyPlanAmtSum,
             agencyPlanAmtSumYr1,
             agencyPlanAmtSumYr2,
@@ -64,7 +64,7 @@ export default {
             agencyActAmtSumYr3
           };
         });
-        console.log(agencyPlanAmtTotArr); //Logs the agencyPlanAmtTotArr
+        console.log(agencyAmtTotArr); //Logs the agencyPlanAmtTotArr
 
         
 
