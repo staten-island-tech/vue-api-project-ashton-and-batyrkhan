@@ -24,8 +24,7 @@ export default {
 
 <style scoped>
 #chart1 {
-  width: 1000px;
-  height: 1000px;
+  width: 100vw;
   justify-content: center;
   margin-right: auto;
   margin-left: auto;

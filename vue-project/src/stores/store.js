@@ -1,8 +1,6 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
-import { options } from '@/components/AgenciesCharts/chartConfig'
-import agencyPlanAmtTotArr from '../components/chartChaer.vue'
-import rowidAmtTotArr from '../components/chartChaer.vue'
+
 
 export const useData = defineStore("data",{
 State: () => {
@@ -15,3 +13,38 @@ State: () => {
 },
 
 });
+ 
+// stores/store.js
+
+/* export const useChartDataStore = defineStore({
+  id: 'chartData',
+  state: () => ({
+    agencyAmtTotArr: {},
+    rowidAmtTotArr: {},
+    agencyCodeSortTotNYCAPI: {},
+    spendingTypeSortTotNYCAPI: {},
+    spendingTypeDescriptionSortTotNYCAPI: {},
+    bgtRwIdSrtAPI: {}
+  }),
+  actions: {
+    setAgencyAmtTotArr(data) {
+      this.agencyAmtTotArr = data;
+    },
+    setRowidAmtTotArr(data) {
+      this.rowidAmtTotArr = data;
+    },
+    setAgencyCodeSortTotNYCAPI(data) {
+      this.agencyCodeSortTotNYCAPI = data;
+    },
+    setSpendingTypeSortTotNYCAPI(data) {
+      this.spendingTypeSortTotNYCAPI = data;
+    },
+    setSpendingTypeDescriptionSortTotNYCAPI(data) {
+      this.spendingTypeDescriptionSortTotNYCAPI = data;
+    },
+    setBgtRwIdSrtAPI(data) {
+      this.bgtRwIdSrtAPI = data;
+    }
+  }
+});
+ */

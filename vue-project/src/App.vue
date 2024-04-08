@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <h1>NYC Agency Spending by Budget Function Website</h1>
       <nav>
         <RouterLink to="/">NYC Agencies</RouterLink>
-        <RouterLink to="/about">NYC Overall Spending, Funding, Headcount</RouterLink>
+        <!--<RouterLink to="/about">About Page</RouterLink>-->      
       </nav>
   </header>
 

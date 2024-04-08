@@ -24,7 +24,6 @@ export default {
 
 <style scoped>
 #chart1 {
-  width: 105rem;
-  height: 105rem;
+  width: 100vw;
 }
 </style>./AgenciesCharts/chartConfig.js./PieChart.vue/index.js

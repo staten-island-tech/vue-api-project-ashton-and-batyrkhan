@@ -5,12 +5,13 @@
 
 <script>
 import { ref, onMounted } from 'vue';
+
 export default {
   setup() {
     const dataNYCAPI = ref([]);
     onMounted(async () => {
       try {
-        const linkNYCAPI = "https://data.cityofnewyork.us/resource/gzfs-3h4m.json?$limit=6700";
+        const linkNYCAPI = "https://data.cityofnewyork.us/resource/gzfs-3h4m.json?$limit=67000";
         const responseNYCAPI = await fetch(linkNYCAPI);
         if(!responseNYCAPI.ok) {//Error handling.
             if (responseNYCAPI.status === 404) {
@@ -305,6 +306,12 @@ export default {
         //------------------------------------------------------------------------------------------------------------------------------------------------------
         dataNYCAPI.value = jsonNYCAPI;
         console.log(dataNYCAPI.value); //Logs every data point */
+        chartDataStore.setAgencyAmtTotArr(agencyAmtTotArr);
+        chartDataStore.setRowidAmtTotArr(rowidAmtTotArr);
+        chartDataStore.setAgencyCodeSortTotNYCAPI(agencyCodeSortTotNYCAPI);
+        chartDataStore.setSpendingTypeSortTotNYCAPI(spendingTypeSortTotNYCAPI);
+        chartDataStore.setSpendingTypeDescriptionSortTotNYCAPI(spendingTypeDescriptionSortTotNYCAPI);
+        chartDataStore.setBgtRwIdSrtAPI(bgtRwIdSrtAPI);
       } catch (error) {
         console.log("Oh no, this is a rather unfortunate conundrum! Here's ur error :P" + error);
       }

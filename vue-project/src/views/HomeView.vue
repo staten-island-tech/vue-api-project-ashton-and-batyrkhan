@@ -22,7 +22,7 @@ import PieChart from '../components/AgenciesCharts/PieChart.vue'
 
 <template>
   <main>
-    <form action="">
+    <!-- <form action="">
       <label for="charts">Choose a Chart:</label>
       <select name="charts" id="charts">
         <optgroup label="mm Charts">
@@ -36,7 +36,7 @@ import PieChart from '../components/AgenciesCharts/PieChart.vue'
       </select>
       <br><br>
       <input type="submit" value="Submit">
-    </form>
+    </form> -->
     <chartChaer />
     <h2>The following is a doughnut style chart representing the plan and actual amounts for each of the departments in
       US dollars. Please note that the following is not a perfect representation of the city's budget as the data within
